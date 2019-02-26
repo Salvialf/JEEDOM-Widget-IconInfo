@@ -1,7 +1,7 @@
-<div style="width:90px;height:90px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
+<div style="width:90px;min-height:100%;background-color:transparent!important;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
 		<center>
-        <div class="cmdName" style="font-weight: bold;font-size : 12px; #hideCmdName#">#name_display#</div>
-		<span style="margin-top: 5px;" id="iconCmd#id#"></span>
+        	<div class="cmdName" style="font-weight: bold;font-size : 12px; #hideCmdName#">#name_display#</div>
+		<span id="iconCmd#id#"></span>
 		</center>
 	<script> 
 	jeedom.cmd.update['#id#'] = function(_options){ 
@@ -18,18 +18,18 @@
 		}
 		
 	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/" + value_name + "_" + value_state + ".png";
-    var iconPathdef = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/defaut_" + value_state + ".png";
+    	var iconPathdef = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/defaut_" + value_state + ".png";
 		 
         $.get(iconPath)
     .done(function() { 
-        $('#iconCmd#id#').empty().append('<img src="' + iconPath + '" /height=70px width=70px>');
+        $('#iconCmd#id#').empty().append('<img src="' + iconPath + '" /height=75px width=75px>');
     })
     .fail(function() { 
-        $('#iconCmd#id#').empty().append('<img src="' + iconPathdef + '" /height=70px width=70px>');
+        $('#iconCmd#id#').empty().append('<img src="' + iconPathdef + '" /height=75px width=75px>');
     })   
       
         $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
       }
-      jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+    	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
 </div>
