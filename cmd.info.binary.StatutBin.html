@@ -1,16 +1,15 @@
 <div style="width:100px;min-height:100%;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
 		<center>
-        <span class="cmdName" style="font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
+        	<span class="cmdName" style="font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
 		<div style="padding-top:2px;" id="iconCmd#id#"></div>
 		</center>
 	<script> 
 	jeedom.cmd.update['#id#'] = function(_options){ 
-          
-    	var value_taille = "#taille#";           
+       
+    	var value_taille = is_numeric('#taille#') ? parseFloat('#taille#'):70;
 	var value_name	= "#name#";
 	var value_state	= "off";
-          
-	
+          	
         if (parseInt(_options.display_value) == 1) {
 			value_state = "on";
 		} else if (parseInt(_options.display_value) == 0) {
