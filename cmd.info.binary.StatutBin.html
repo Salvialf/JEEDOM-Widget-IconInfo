@@ -1,0 +1,35 @@
+<div style="width:90px;height:90px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
+		<center>
+        <div class="cmdName" style="font-weight: bold;font-size : 12px; #hideCmdName#">#name_display#</div>
+		<span style="margin-top: 5px;" id="iconCmd#id#"></span>
+		</center>
+	<script> 
+	jeedom.cmd.update['#id#'] = function(_options){ 
+          
+	var value_name	= "#name#";
+	var value_state	= "off";
+	
+        if (parseInt(_options.display_value) == 1) {
+			value_state = "on";
+		} else if (parseInt(_options.display_value) == 0) {
+			value_state = "off";
+		} else {
+			value_state = "wrn";
+		}
+		
+	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/" + value_name + "_" + value_state + ".png";
+    var iconPathdef = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/defaut_" + value_state + ".png";
+		 
+        $.get(iconPath)
+    .done(function() { 
+        $('#iconCmd#id#').empty().append('<img src="' + iconPath + '" /height=70px width=70px>');
+    })
+    .fail(function() { 
+        $('#iconCmd#id#').empty().append('<img src="' + iconPathdef + '" /height=70px width=70px>');
+    })   
+      
+        $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+      }
+      jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+	</script>
+</div>
