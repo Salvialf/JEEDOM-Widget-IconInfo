@@ -1,7 +1,7 @@
-<div style="width:90px;min-height:100%;background-color:transparent!important;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
+<div style="width:100px;min-height:100%;display:inline!important;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
 		<center>
-        	<div class="cmdName" style="font-weight: bold;font-size : 12px; #hideCmdName#">#name_display#</div>
-		<span id="iconCmd#id#"></span>
+        	<span class="cmdName" style="font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
+		<div style="padding-top:2px;" id="iconCmd#id#"></div>
 		</center>
 	<script> 
 	jeedom.cmd.update['#id#'] = function(_options){ 
@@ -30,6 +30,6 @@
       
         $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
       }
-    	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+      jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
 </div>
