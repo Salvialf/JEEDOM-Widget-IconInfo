@@ -1,7 +1,7 @@
-<div style="min-width:95px;min-height:95px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
+<div style="min-width:95px;min-height:100%;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
 		<center>
-        	<span class="cmdName" style="font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
-		<div style="padding-top:2px;" id="iconCmd#id#"></div>
+        <span class="cmdName" style="font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
+		<div style="padding-top:5px;" id="iconCmd#id#"></div>
 		</center>
 	<script> 
 	jeedom.cmd.update['#id#'] = function(_options){ 
@@ -18,7 +18,7 @@
 		}
 		
 	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/" + valueName + "_" + valueState + ".png";
-    	var iconPathDef = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/defaut_" + valueState + ".png";
+    var iconPathDef = "plugins/widget/core/template/dashboard/cmd.info.binary.StatutBin/defaut_" + valueState + ".png";
 	var valueTaille = is_numeric('#taille#') ? parseFloat('#taille#'):80;
 	
         $.get(iconPath)
