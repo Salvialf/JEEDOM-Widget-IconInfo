@@ -1,4 +1,4 @@
-# StatutBin
+# IconInfo
 Widget pour Jeedom permettant d'affecter automatiquement une icône à un équipement selon son état allumé ou éteint. 
 <i>(Info Binaire "off" ou "on" = "0" ou "1")</i>
 
