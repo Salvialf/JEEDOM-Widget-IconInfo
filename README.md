@@ -8,7 +8,7 @@ Le widget inclus 125 appareils différents + 1 visuel par défaut mais il est po
 <img src="/doc/LogoNameList.jpg" alt="nomlogo"/>
 
 Après avoir appliqué le widget, l'attribution des icônes se fait par le nom de la commande (<i>name</i>) ou par l'ajout d'un paramètre optionnel "<i><b>name</b></i>" dans les <i>Paramètres optionnels du widget</i> sur l'onglet <i>Affichage</i> de la configuration de la commande.
-La liste des noms d'équipements intégrés au widget est visible au début du code du widget et est disponible ici: <a href="/doc/LogoNameList.txt">Liste "name"</a>.</br>
+La liste des noms d'équipements intégrés au widget est visible au début du code du widget et est disponible ici: <a href="/doc/LogoNameList.md">Liste "name"</a>.</br>
 Il est également possible de spécifier la taille des icônes par l'ajout d'un paramètre optionnel "<i><b>taille</b></i>" ayant pour valeur la dimension souhaitée. Par exemple: taille:100 = icône de 100px*100px. Par défaut les icônes font 80px*80px.
 <img src="/doc/params.jpg" alt="parametres"/>
 
