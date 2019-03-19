@@ -1,4 +1,5 @@
-<div // airpur // ambilight // ambilight2 // ampli // amplihc// aquarium // arrosage // aspirateur // aspixiaomi // bal // barreson // bbox // bbox2	
+<div style="min-width:95px;min-height:100%;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" title="#collectDate#">
+<!--// airpur // ambilight // ambilight2 // ampli // amplihc// aquarium // arrosage // aspirateur // aspixiaomi // bal // barreson // bbox // bbox2	
 // bboxtv // bluray // box // broadlinkair // broadlinkmini // broadlinkprise // broadlinkpro // cafetiere // cave // cave2 // chainehifi 
 // chauffage // chromecast // congelateur // defaut // ds918 // dvd // ecranproj // free // freeadsl // freebox // freeboxtv // freedelta 
 // freewifi // frigo // frigo2 // gateway // ghome // gminig // gminin // gminio // gps // hotte // hp // huev1 // huev2 // impr // imprimante 
@@ -7,18 +8,24 @@
 // moustiques // nas // note8 // nswitch // nuc // onetouch // orange // orvibo // paw // pc // pc2 // pharmacie // playstation // playstation2 
 // plex // pms // poele // pompe // portapple // portwin // poulailler // prise // raspbmc // raspi // refrigerateur // repwifi // repwifi2 
 // sapin // sarah // sechelinge // secheserviette // sfr // sfrbox // slinge // subwoofer // switch // synow // synob // synort1900 // synort2600 
-// tab4 // tv // tv2 // videoproj // vmc // wii // wiiu // xbmc // xbmc2 // xbox // xbox2 // xpenology // zibase
-     
-	style="min-width:95px;min-height:100%;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-version="#version#" title="#collectDate#">
-	<center>
+// tab4 // tv // tv2 // videoproj // vmc // wii // wiiu // xbmc // xbmc2 // xbox // xbox2 // xpenology // zibase -->
+  <center>
         <span class="cmdName" style="padding-top:3px;font-family:system-ui;font-weight:bold;font-size:14px;#hideCmdName#">#name_display#</span>
 	<div style="padding-top:5px;" class="iconCmd#uid#"></div>
+    <span class="timeCmd#id# label" style="background-color:#cmdColor#!important;"></span>
 	</center>
 	<script> 
-	jeedom.cmd.update['#id#'] = function(_options){ 
-
+	jeedom.cmd.update['#id#'] = function(_options){
+      $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+    var valUptime = Boolean('#uptime#');
+     
+      if (valUptime == false) {
+  		jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
+      	}
+      else { }
+	
 	var valueState	= "off";
-          	
+              	
         if (parseInt(_options.display_value) == 1) {
 			valueState = "on";
 		} else if (parseInt(_options.display_value) == 0) {
@@ -26,20 +33,19 @@
 		} else {
 			valueState = "wrn";
 		}
-		
-	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/#name#_" + valueState + ".png";
+      
 	var valueTaille = is_numeric('#taille#') ? parseFloat('#taille#'):80;
-	
-        $.get(iconPath)
+    var paramTaille = '/height='+valueTaille+'px width='+valueTaille+'px';
+	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/#name#_"+valueState+".png";
+      
+    $.get(iconPath)
     	.done(function() { 
-        $('.iconCmd#uid#').empty().append('<img src="'+ iconPath +'" /height='+ valueTaille +'px width='+ valueTaille +'px>');
+        $('.iconCmd#uid#').empty().append('<img src="'+iconPath+'" '+paramTaille+'>');
     	})
     	.fail(function() { 
-        $('.iconCmd#uid#').empty().append('<img src="plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/defaut_'+ valueState +'.png" /height='+ valueTaille +'px width='+ valueTaille +'px>');
+        $('.iconCmd#uid#').empty().append('<img src="plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/defaut_'+ valueState +'.png" '+paramTaille+'>');
     	})   
-      
-        $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectÃ©e le '+_options.collectDate);
-      	}
+    } 
       	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 	</script>
 </div>
