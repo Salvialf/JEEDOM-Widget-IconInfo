@@ -7,10 +7,11 @@ Le widget inclus 139 appareils différents + 1 visuel par défaut mais il est po
 <b>139 équipements intégrés + 1 icône par défaut:</b>
 <img src="/doc/LogoNameList.jpg" alt="nomlogo"/>
 
-Après avoir appliqué le widget, l'attribution des icônes se fait par le nom de la commande (<i>name</i>) ou par l'ajout d'un paramètre optionnel "<i><b>name</b></i>" dans les <i>Paramètres optionnels du widget</i> sur l'onglet <i>Affichage</i> de la configuration de la commande.
-<blockquote>Liste des noms d'équipements intégrés au widget: <a href="/doc/LogoNameList.md">Liste "name"</a>.</blockquote>
+Après avoir appliqué le widget, l'attribution des icônes se fait  par l'ajout d'un paramètre optionnel "<i><b>type</b></i>" dans les <i>Paramètres optionnels du widget</i> sur l'onglet <i>Affichage</i> de la configuration de la commande.
+<blockquote>Liste des noms d'équipements intégrés au widget: <a href="/doc/LogoNameList.md">Liste "type"</a>.</blockquote>
 
-Il est également possible de spécifier la taille des icônes par l'ajout d'un paramètre optionnel "<i><b>taille</b></i>" ayant pour valeur la dimension souhaitée. Par exemple: taille:100 = icône de 100px*100px. Par défaut les icônes font 80px*80px.
+Il est également possible de spécifier la hauteur et la largeur des icônes par l'ajout de paramètres optionnels "<i><b>hauteur</b></i>" & "<i><b>largeur</b></i>" ayant pour valeur la dimension souhaitée (exemple: hauteur=120 - largeur=90 -> icône de 120px*90px).
+Par défaut les icônes font 80px*80px.
 
 Pour afficher la durée depuis le dernier allumage/extinction, il suffit d'ajouter un paramètre optionnel "<i><b>time</b></i>" <b>sans valeur (champ vide)</b>.
 
