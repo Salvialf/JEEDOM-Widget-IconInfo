@@ -17,9 +17,9 @@ Pour afficher la durée depuis le dernier allumage/extinction, il suffit d'ajout
 
 <img src="/doc/params.jpg" alt="parametres"/>
 
-Vous avez la possibilité d'inclure vos propres icônes dans le widget. Le nommage des icônes est normalisé et doit respecter le format suivant: "<i>name_off.png</i>" & "<i>name_on.png</i>". Pour ajouter vos icônes, sur la page du Widget, cliquer sur le bouton "Fichiers" tout en haut puis "choisir un fichier" et ajouter vos images une par une.
+Vous avez la possibilité d'inclure vos propres icônes dans le widget. Le nommage des icônes est normalisé et doit respecter le format suivant: "<i>type_off.png</i>" & "<i>type_on.png</i>". Pour ajouter vos icônes, sur la page du Widget, cliquer sur le bouton "Fichiers" tout en haut puis "choisir un fichier" et ajouter vos images une par une.
 <img src="/doc/AjoutIcone.jpg" alt="ajouticone"/>
 
-Le widget prend en compte l'affichage d'une icône en cas de retour d'état différent de "0" ou "1". Le fichier correspondant doit s'appeler: "<i>name_wrn.png</i>". Le widget peut ainsi être adapté aux commandes de type <i>Info</i>/<i>Numérique</i> en remplaçant le sous-type "Binaire" par "Numérique" dans le menu déroulant du widget et "binary" par "numeric" sur la première ligne du code.
+Le widget prend en compte l'affichage d'une icône en cas de retour d'état différent de "0" ou "1". Le fichier correspondant doit s'appeler: "<i>type_wrn.png</i>". Le widget peut ainsi être adapté aux commandes de type <i>Info</i>/<i>Numérique</i> en remplaçant le sous-type "Binaire" par "Numérique" dans le menu déroulant du widget et "binary" par "numeric" sur la première ligne du code.
 <img src="/doc/num.jpg" alt="numerique"/>
 
