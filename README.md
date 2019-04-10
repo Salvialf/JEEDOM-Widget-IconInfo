@@ -13,13 +13,19 @@ Après avoir appliqué le widget, l'attribution des icônes se fait  par l'ajout
 Il est également possible de spécifier la hauteur et la largeur des icônes par l'ajout de paramètres optionnels "<i><b>hauteur</b></i>" & "<i><b>largeur</b></i>" ayant pour valeur la dimension souhaitée (exemple: hauteur=120 - largeur=90 -> icône de 120px*90px).
 Par défaut les icônes font 80px*80px.
 
-Pour afficher la durée depuis le dernier allumage/extinction, il suffit d'ajouter un paramètre optionnel "<i><b>time</b></i>" <b>sans valeur (champ vide)</b>.
+Pour afficher les informations de temps depuis le dernier allumage/extinction, il suffit d'ajouter un paramètre optionnel "<i><b>time</b></i>" avec la valeur suivante au choix:  
+* '**duree**': affiche la durée depuis le dernier allumage/extinction.  
+* '**heure**': affiche l'heure de dernier allumage extinction.  
+* '**date**': affiche la date et l'heure de dernier allumage/extinction.  
 
-<img src="/doc/params.jpg" alt="parametres"/>
+<img src="/doc/timeIconinfo.jpg" alt="temps"/>
+
+Le paramètre "<i><b>extension</b></i>" permet de choisir le format des icônes en valeur (par exemple: 'gif', 'jpg', etc.....).
+
+---------------------
 
 Vous avez la possibilité d'inclure vos propres icônes dans le widget. Le nommage des icônes est normalisé et doit respecter le format suivant: "<i>type_off.png</i>" & "<i>type_on.png</i>". Pour ajouter vos icônes, sur la page du Widget, cliquer sur le bouton "Fichiers" tout en haut puis "choisir un fichier" et ajouter vos images une par une.
 <img src="/doc/AjoutIcone.jpg" alt="ajouticone"/>
 
 Le widget prend en compte l'affichage d'une icône en cas de retour d'état différent de "0" ou "1". Le fichier correspondant doit s'appeler: "<i>type_wrn.png</i>". Le widget peut ainsi être adapté aux commandes de type <i>Info</i>/<i>Numérique</i> en remplaçant le sous-type "Binaire" par "Numérique" dans le menu déroulant du widget et "binary" par "numeric" sur la première ligne du code.
 <img src="/doc/num.jpg" alt="numerique"/>
-
