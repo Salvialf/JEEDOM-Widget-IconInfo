@@ -50,14 +50,16 @@
 	var iconPath = "plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/"+valueType+"_"+valueState+"."+valueFile;
       
         $('.iconCmd#uid#').empty().append('<img src="'+iconPath+'" '+paramTaille+'>');
-    	
+    
     var valUptime = '#time#';
      
       if (valUptime == 'duree') {
-  		jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
+ 		$.include(['plugins/widget/core/template/dashboard/cmd.info.binary.IconInfo/duration.custom.js'], function() {
+         jeedom.cmd.displayDuration2(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));  
+	 })
       	}
       else if (valUptime == 'date') {
-      	var date = new Date(_options.valueDate);
+        var date = new Date(_options.valueDate);
 		var format = $.datepicker.formatDate('D dd/mm', date);
 		var time = "à "+date.getHours()+":"+(date.getMinutes()<10?'0':'')+date.getMinutes();
         $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(format+'<br>'+time);
