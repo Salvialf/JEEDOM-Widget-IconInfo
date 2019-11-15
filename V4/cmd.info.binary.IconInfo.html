@@ -1,64 +1,47 @@
-<!-- airpur - ambilight - ambilight2 - ampli - amplihc - aquarium - arrosage - aspirateur - aspixiaomi - bal - barreson - bbox - bbox2 - bboxtv 
-- bluray - box - broadlinkair - broadlinkmini - broadlinkprise - broadlinkpro - cafetiere - cam1 - cam2 - cam3 - cam4 - camext - cave - cave2 
-- chainehifi - chauffage - chromecast - congelateur - defaut - ds918 - dvd - echob - echodot - echog - echospotb - echospotw - echow - ecranproj 
-- free - freeadsl - freebox - freeboxtv - freedelta - freewifi - frigo - frigo2 - gateway - ghome - gminig - gminin - gminio - gps - hotte - hp 
-- huev1 - huev2 - impr - imprimante - imprimante2 - imprlaser - ipad - iphone4 - jeedom - jeedomm - jeedoms1 - jeedoms2 - jeedoms3 - jeedomsmart 
-- jpi - kodi - kodi2 - lavelinge - lavevaisselle - lgg3 - linux - livebox - livebox2 - livebox4 - lvaisselle  - mac - machinealaver - machinelaver 
-- moustiques - nas - note8 - nswitch - nuc - onetouch - orange - orvibo - paw - pc - pc2 - pharmacie - playstation - playstation2 - plex - pms 
-- poele - pompe - portapple - portwin - poulailler - prise - raspbmc - raspi - refrigerateur - repwifi - repwifi2 - routeur - routeur2 - routeur3 
-- sapin - sarah - sechelinge - secheserviette - sfr - sfrbox - slinge - subwoofer - switch - synow - synob - synort1900 - synort2600 - tab4 - tv 
-- tv2 - videoproj - vmc - wii - wiiu - xbmc - xbmc2 - xbox - xbox2 - xpenology - zibase -->
-
 <div class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">  
   <div class="title #hide_name#">
     <div class="cmdName">#name_display#</div>
   </div>
-	<div class="iconCmd#uid#"></div>
-    <span class="timeCmd#uid# timeCmd label label-default"></span>
-<style>
-    .iconCmd#uid# {
-      margin:0px 4px 4px 4px;
-    }
-</style>
+	<div class="iconCmd"></div>
+    <div class="value">
+    <span class="timeCmd label label-default" data-type="info"></span>
+  </div>
   <script> 
 	jeedom.cmd.update['#id#'] = function(_options){
-            	
-	var valueState	= "off";
-              	
-        if (parseInt(_options.display_value) == 1) {
-			valueState = "on";
-		} else if (parseInt(_options.display_value) == 0) {
-			valueState = "off";
-		} else {
-			valueState = "wrn";
-		}
+    var cmd = $('.cmd[data-cmd_id=#id#]')
+	cmd.attr('title','Date de valeur: '+_options.valueDate+'<br/>Date de collecte: '+_options.collectDate)
       
-	var valueH = is_numeric('#hauteur#') ? parseFloat('#hauteur#'):75;
+    var valueH = is_numeric('#hauteur#') ? parseFloat('#hauteur#'):75;
     var valueL = is_numeric('#largeur#') ? parseFloat('#largeur#'):75;
     var paramTaille = 'height='+valueH+'px width='+valueL+'px';
     var valueFile = ('#extension#' !='#'+'extension#') ? "#extension#":"png";
     var valueType = ('#type#' !='#'+'type#') ? "#type#":"defaut";
-	var iconPath = "data/customTemplates/dashboard/cmd.info.binary.IconInfo/"+valueType+"_"+valueState+"."+valueFile;
       
-        $('.iconCmd#uid#').empty().append('<img src="'+iconPath+'" '+paramTaille+'>');
+      if (_options.display_value == '1') {
+        cmd.attr('data-state','on')
+        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_on.'+valueFile+'" '+paramTaille+'>').css('margin','0px 4px 4px 4px');
+          }else {
+        cmd.attr('data-state','off')
+        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_off.'+valueFile+'" '+paramTaille+'>').css('margin','0px 4px 4px 4px');
+          }
       
      if ('#time#' == 'duree') {  
-         jeedom.cmd.displayDuration(_options.valueDate,  $('.cmd[data-cmd_id=#id#] .timeCmd'));
-      	}       
-      	
+        jeedom.cmd.displayDuration(_options.valueDate,cmd.find('.timeCmd'));
+          }
       else if ('#time#' == 'date') {
-      	var date = new Date(_options.valueDate);
-		var format = $.datepicker.formatDate('D dd/mm', date);
-		var time = "à "+date.getHours()+":"+(date.getMinutes()<10?'0':'')+date.getMinutes();
-        $('.cmd[data-cmd_id=#id#] .timeCmd').html(format+'<br>'+time);
+      	var date = new Date(_options.valueDate.replace(' ', 'T'));
+        var t = _options.valueDate.split(/[- :]/);
+		var format = $.datepicker.formatDate('D d M', date);
+        var time = "à "+t[3]+":"+t[4];  
+        cmd.find('.timeCmd').html(format+'<br>'+time);
       	}
       else if ('#time#' == 'heure') {
-        var date = new Date(_options.valueDate);
-        var time = "à "+date.getHours()+":"+(date.getMinutes()<10?'0':'')+date.getMinutes()+":"+(date.getSeconds()<10?'0':'')+date.getSeconds()+"";
-        $('.cmd[data-cmd_id=#id#] .timeCmd').html(time);
+        var date = new Date(_options.valueDate.replace(' ', 'T'));
+        var t = _options.valueDate.split(/[- :]/);
+        var time = "à "+t[3]+":"+t[4]+":"+t[5];  
+        cmd.find('.timeCmd').html(time);
       	}
-      $('.cmd[data-cmd_id=#id#]').attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
-    } 
+          }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 </script>
 </div>
