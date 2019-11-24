@@ -1,13 +1,12 @@
 <div class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">  
-  <div class="title #hide_name#">
-    <div class="cmdName">#name_display#</div>
-  </div>
-	<div class="iconCmd"></div>
-    <span class="timeCmd value" data-type="info"></span>
+  <center>
+		<div class="cmdName #hide_name#">#name_display#</div>
+	<div id="iconCmdInfo"></div>
+    <span class="timeCmd label label-default" data-type="info"></span>
+  </center>
   <script> 
 	jeedom.cmd.update['#id#'] = function(_options){
     var cmd = $('.cmd[data-cmd_id=#id#]')
-	cmd.attr('title','Date de valeur: '+_options.valueDate+'<br/>Date de collecte: '+_options.collectDate)
       
     var valueH = is_numeric('#hauteur#') ? parseFloat('#hauteur#'):75;
     var valueL = is_numeric('#largeur#') ? parseFloat('#largeur#'):75;
@@ -17,10 +16,10 @@
       
       if (_options.display_value == '1') {
         cmd.attr('data-state','on')
-        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_on.'+valueFile+'" '+paramTaille+'>');
+        cmd.find('#iconCmdInfo').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_on.'+valueFile+'" '+paramTaille+'>');
           }else {
         cmd.attr('data-state','off')
-        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_off.'+valueFile+'" '+paramTaille+'>');
+        cmd.find('#iconCmdInfo').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_off.'+valueFile+'" '+paramTaille+'>');
           }
       
      if ('#time#' == 'duree') {  
@@ -32,7 +31,7 @@
         var t = _options.valueDate.split(/[- :]/);
 		var format = week[date.getDay()]+" "+t[2]+"/"+t[1];
         var time = "à "+t[3]+":"+t[4];
-        cmd.find('.timeCmd').html(format+'<br>'+time);
+        cmd.find('.timeCmd').css('display','inline-block').html(format+'<br>'+time);
       	}
       else if ('#time#' == 'heure') {
         var date = new Date(_options.valueDate.replace(' ', 'T'));
@@ -40,6 +39,8 @@
         var time = "à "+t[3]+":"+t[4]+":"+t[5];  
         cmd.find('.timeCmd').html(time);
       	}
+      else{cmd.find('.timeCmd').remove();}
+      
           }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 </script>

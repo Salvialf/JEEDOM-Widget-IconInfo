@@ -2,10 +2,8 @@
   <div class="title #hide_name#">
     <div class="cmdName">#name_display#</div>
   </div>
-	<div class="iconCmd"></div>
-    <div class="value">
+	<div id="iconCmdInfo"></div>
     <span class="timeCmd label label-default" data-type="info"></span>
-  </div>
   <script> 
 	jeedom.cmd.update['#id#'] = function(_options){
     var cmd = $('.cmd[data-cmd_id=#id#]')
@@ -19,20 +17,21 @@
       
       if (_options.display_value == '1') {
         cmd.attr('data-state','on')
-        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_on.'+valueFile+'" '+paramTaille+'>').css('margin','0px 4px 4px 4px');
+        cmd.find('#iconCmdInfo').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_on.'+valueFile+'" '+paramTaille+'>').css('padding','0 5px 0 5px');
           }else {
         cmd.attr('data-state','off')
-        cmd.find('.iconCmd').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_off.'+valueFile+'" '+paramTaille+'>').css('margin','0px 4px 4px 4px');
+        cmd.find('#iconCmdInfo').empty().append('<img src="data/customTemplates/dashboard/cmd.info.binary.IconInfo/'+valueType+'_off.'+valueFile+'" '+paramTaille+'>').css('padding','0 5px 0 5px');
           }
       
      if ('#time#' == 'duree') {  
         jeedom.cmd.displayDuration(_options.valueDate,cmd.find('.timeCmd'));
           }
       else if ('#time#' == 'date') {
-      	var date = new Date(_options.valueDate.replace(' ', 'T'));
+        var week = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+    	var date = new Date(_options.valueDate.replace(' ', 'T'));
         var t = _options.valueDate.split(/[- :]/);
-		var format = $.datepicker.formatDate('D d M', date);
-        var time = "à "+t[3]+":"+t[4];  
+		var format = week[date.getDay()]+" "+t[2]+"/"+t[1];
+        var time = "à "+t[3]+":"+t[4];
         cmd.find('.timeCmd').html(format+'<br>'+time);
       	}
       else if ('#time#' == 'heure') {
@@ -41,6 +40,7 @@
         var time = "à "+t[3]+":"+t[4]+":"+t[5];  
         cmd.find('.timeCmd').html(time);
       	}
+      
           }
       jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 </script>
